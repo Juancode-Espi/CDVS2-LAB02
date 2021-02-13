@@ -11,10 +11,8 @@ public class PowerBonusScore implements GameScore {
 	@Override
 	public int calculateScore(int correctCount, int incorrectCount) {
 		int score = 0;
-		for (int i = 0;i<=correctCount;i++) {
-			score += Math.pow(5, i);
-		}
-		score = score - incorrectCount*8;
+
+		score = (int) (score - incorrectCount*8 + Math.pow(5, correctCount));
 		if (score > 500) {
 			return 500;
 		}else {
