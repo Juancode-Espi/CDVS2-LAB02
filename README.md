@@ -103,15 +103,15 @@ principio de inversión de dependencias:
 	
 	| Número| Clase de equivalencia | Resultado|
 	| :---       |     ---     |   ---   |
-	| 1|  ```java 0<=score && score<=100```|Correcto|
-	| 2| ```java score==-10, score==0, score==10```|Frontera|	
+	| 1|  ```0<=score && score<=100```|Correcto|
+	| 2| ```score==-10, score==0, score==10```|Frontera|	
 
 	- BonusScore:
 
 	| Número| Clase de equivalencia | Resultado|
 	| :---       |     ---     |   ---   |
-	| 1|  ```java 0<=score```|Correcto|	
-	| 2| ```java score==-5, score==0, score==5```|Frontera|
+	| 1|  ```0<=score```|Correcto|	
+	| 2| ```score==-5, score==0, score==5```|Frontera|
 
 	- PowerBonusScore:
 	
