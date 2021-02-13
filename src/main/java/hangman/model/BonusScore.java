@@ -1,7 +1,7 @@
 package hangman.model;
 
 public class BonusScore implements GameScore {
-
+	private int score = 0;
 	/**
      * Calculo del puntaje letras correctas bonifican con 10 puntos e incorrectas resta 5 puntos
      * @param correctCount numero de letras correctas
@@ -11,7 +11,6 @@ public class BonusScore implements GameScore {
 	@Override
 	public int calculateScore(int correctCount, int incorrectCount) {
 		// TODO Auto-generated method stub
-		int score = 0;
 		score = score + correctCount*10  - incorrectCount*5;
 		if (score < 0) {
 			return 0;
