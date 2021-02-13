@@ -1,6 +1,10 @@
 ### Escuela Colombiana de Ingeniería
 
 ### Procesos de Desarrollo de Software
+## CVDS - Lab04
+
++ Juan Pablo Espinosa Tovar
++ Ricardo Amaya Rivera
 
 ### Desarrollo Dirigido por Pruebas + DIP + DI + Contenedores Livianos
 
@@ -51,7 +55,34 @@ principio de inversión de dependencias:
    variantes de GameScore), a partir de las especificaciones
    generales dadas anteriormente. Recuerde tener en cuenta: @pre,
    @pos, @param, @throws.
-
+   
+   - OriginalScore: 
+    ```java
+   	/**
+	* Calculo del puntaje entre 0 y 100 letras correctas no bonifican e incorrectas resta 10 puntos
+	* @param correctCount numero de letras correctas
+	* @param incorrectCount numero de letras incorrectas
+	* @return puntaje calculado en base a los parámetros
+	*/
+    ```
+    - BonusScore:
+    ```java
+   	/**
+	* Calculo del puntaje letras correctas bonifican con 10 puntos e incorrectas resta 5 puntos
+	* @param correctCount numero de letras correctas
+	* @param incorrectCount numero de letras incorrectas
+	* @return puntaje calculado en base a los parámetros
+	*/
+    ```
+    - PowerBonusScore:
+    ```java
+    	/**
+	* Calculo del puntaje La $i-ésima$ letra correcta se bonifica con $5^i$. e incorrectas resta 8 puntos
+	* @param correctCount numero de letras correctas
+	* @param incorrectCount numero de letras incorrectas
+	* @return puntaje calculado en base a los parámetros
+	*/
+     ```
 4. Haga commit de lo realizado hasta ahora. Desde la terminal:
 
 	```bash		
@@ -67,6 +98,29 @@ principio de inversión de dependencias:
    comentarios iniciales, especifique las clases de equivalencia para
    las tres variantes de GameScore, e identifique
    condiciones de frontera. 
+   
+   	- OriginalScore:
+	
+	| Número| Clase de equivalencia | Resultado|
+	| :---       |     ---     |   ---   |
+	| 1|  ```java 0<=score && score<=100```|Correcto|
+	| 2| ```java score==-10, score==0, score==10```|Frontera|	
+
+	- BonusScore:
+
+	| Número| Clase de equivalencia | Resultado|
+	| :---       |     ---     |   ---   |
+	| 1|  ```java 0<=score```|Correcto|	
+	| 2| ```java score==-5, score==0, score==5```|Frontera|
+
+	- PowerBonusScore:
+	
+	| Número| Clase de equivalencia | Resultado|
+	| :---       |     ---     |   ---   |
+	| 1|  ```0<=score<=500```|Correcto|
+	| 2| ```score==-8, score==0, score==5```|Frontera Inferior|
+	| 3| ```score==155, score==500, score==780```|Frontera Superior|
+  
 
 7. Para cada clase de equivalencia y condición de frontera, implemente
    una prueba utilizando JUnit.
