@@ -16,7 +16,7 @@ import hangman.model.dictionary.HangmanDictionary;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
+import com.google.inject.Inject;
 
 public class GameModel {
     private int incorrectCount;
@@ -24,14 +24,15 @@ public class GameModel {
     private LocalDateTime dateTime;
     private int gameScore;
     private int[] lettersUsed;
-    
-    
+
+
     private HangmanDictionary dictionary;
     
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
-    
+    @Inject
+    private GameScore score;  
     
    
     public GameModel(HangmanDictionary dictionary){
@@ -52,13 +53,24 @@ public class GameModel {
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = score.reset();
     }
 
     //setDateTime
     //purpose: sets game date/time to system date/time
     public void setDateTime() {
         this.dateTime = LocalDateTime.now();
+    }
+    //setScore
+    //purpose: sets score value to points
+    public void setScore(int score) {
+        this.gameScore = score;
+    }
+    
+    //getScore
+    //purpose: returns current score value
+    public int getScore() {
+        return gameScore;
     }
     
     //method: makeGuess
@@ -74,10 +86,11 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
+            
         } else {
             correctCount += positions.size();
         }
+        gameScore = score.calculateScore(correctCount, incorrectCount);
         return positions;
         
     }
@@ -91,15 +104,7 @@ public class GameModel {
 
     //setScore
     //purpose: sets score value to points
-    public void setScore(int score) {
-        this.gameScore = score;
-    }
-    
-    //getScore
-    //purpose: returns current score value
-    public int getScore() {
-        return gameScore;
-    }
+
 
     //name: selectRandomWord()
     //purpose: selects random word from dictionary

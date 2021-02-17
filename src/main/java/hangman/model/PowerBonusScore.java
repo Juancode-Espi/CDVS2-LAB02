@@ -23,5 +23,10 @@ public class PowerBonusScore implements GameScore {
 			}		
 		}
 	}
+	@Override
+	public int reset() {
+		this.score=0;
+		return 0;
+	}
 
 }

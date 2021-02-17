@@ -18,5 +18,9 @@ public class BonusScore implements GameScore {
 			return score;
 		}
 	}
-
+	@Override
+	public int reset() {
+		this.score=0;
+		return 0;
+	}
 }

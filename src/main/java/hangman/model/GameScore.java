@@ -8,4 +8,6 @@ public interface GameScore {
      * @return puntaje calculado en base a los parámetros
      */
 	public abstract int calculateScore(int correctCount,int incorrectCount);
+
+	public abstract int reset();
 }
