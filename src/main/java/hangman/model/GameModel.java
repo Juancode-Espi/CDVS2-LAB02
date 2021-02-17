@@ -43,6 +43,7 @@ public class GameModel {
         incorrectCount = 0;
         correctCount = 0;
         gameScore = 100;
+        score = new OriginalScore();
         
     }
     

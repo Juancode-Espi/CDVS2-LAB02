@@ -9,7 +9,19 @@ package hangman.setup.guice;
  *
  * @author 2106913
  */
+import hangman.*;
 
+/**
+ *
+ * @author 2106913
+ */
+
+import hangman.model.dictionary.EnglishDictionaryDataSource;
+import hangman.model.*;
+import hangman.model.dictionary.HangmanDictionary;
+import hangman.model.dictionary.FrenchDictionaryDataSource;
+import hangman.view.*;
+import hangman.model.English;
 import hangman.model.French;
 import hangman.model.GameScore;
 import hangman.model.Language;
@@ -25,6 +37,9 @@ public class HangmanFactoryServices extends com.google.inject.AbstractModule {
     protected void configure() {
         /* Guice dependency injection */
          bind(GameScore.class).to(OriginalScore.class);
+         bind(Language.class).to(English.class); 
+         bind(HangmanDictionary.class).to(EnglishDictionaryDataSource.class);
+         bind(HangmanPanel.class).to(HangmanStickmanPanel.class);
     }
 
 }
